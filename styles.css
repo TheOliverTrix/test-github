@@ -35,6 +35,23 @@ header ul {
     list-style: none;
     display: flex; /* Plasserer listeelementene horisontalt */
     gap: 60px; /* Avstand mellom elementene */
-    
     padding-right: 150px;
+}
+
+header ul a {
+    color: inherit; /* Arver tekstfargen fra foreldreelementet eller annen angitt farge */
+    text-decoration: none; /* Fjerner understrekningen */
+}
+
+
+
+
+/* Dette under her er til prosjketer og kontakt siden */
+
+#prosjekter {
+    color: white;
+}
+
+#kontakt {
+    color: white;
 }
