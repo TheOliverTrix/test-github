@@ -44,9 +44,10 @@
     display: block;
     /* Animasjons-egenskapene: */
     animation-name: slow-reveal; /* Bruk den nye animasjonen */
-    animation-duration: 3s; /* Slow-mo varighet */
+    animation-duration: 7s; /* Slow-mo varighet */
     animation-timing-function: ease-in-out; 
-    animation-iteration-count: infinite; 
+    animation-iteration-count: infinite;
+    animation-delay: 5s;
 }
 
 
@@ -56,9 +57,10 @@
     display: block;
     /* Animasjons-egenskapene: */
     animation-name: slow-reveal; /* Bruk den nye animasjonen */
-    animation-duration: 3s; /* Slow-mo varighet */
+    animation-duration: 7s; /* Slow-mo varighet */
     animation-timing-function: ease-in-out; 
-    animation-iteration-count: infinite; 
+    animation-iteration-count: infinite;
+    animation-delay: 1.2s;
 }
 
 
@@ -70,7 +72,8 @@
     animation-name: slow-reveal; /* Bruk den nye animasjonen */
     animation-duration: 3s; /* Slow-mo varighet */
     animation-timing-function: ease-in-out; 
-    animation-iteration-count: infinite; 
+    animation-iteration-count: infinite;
+    animation-delay: 2.4s;
 }
 
 
