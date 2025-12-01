@@ -5,6 +5,7 @@
 }
 body {
         overflow-x: hidden; /* Skjuler horisontal scrolling */
+        max-width: 100%;
 }
 
 /* ---------------------------ANIMASJON-------------------------------- */
@@ -243,7 +244,7 @@ main {
 
 .bilde-container1 img {
     max-width: 100%; /*Bildet skal ikke overstige containeren */
-    width: 25%;
+    height: auto;
     /* object-fit: cover; Gjør at bildet dekker området hvis nødvendig */
     flex: 1; /* Gir bildet fleksibilitet i bredden */
 }
