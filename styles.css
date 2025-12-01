@@ -183,6 +183,8 @@ main {
     margin-top: 7px;
     z-index: 3;
     rotate: 10deg;
+    max-width: 100%;
+    height: auto;
 
 }
 
@@ -192,6 +194,8 @@ main {
     margin-left: 4rem;
     margin-top: 7px;
     rotate: 10deg;
+    max-width: 100%;
+    height: auto;
 }
 
 #maling3 {
@@ -200,6 +204,8 @@ main {
     margin-left: 13rem;
     margin-top: 18rem;
     rotate: 1deg;
+    max-width: 100%;
+    height: auto;
 }
 
 .flex-container1{
