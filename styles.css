@@ -171,6 +171,13 @@ main {
     flex-direction: column;
 }
 
+.maling-flex, .flex-container1 {
+    /* Sikrer at flex-containeren bruker plassen riktig på mobil */
+    width: 100%; 
+    min-width: 0; /* Hjelper til med å la innholdet krympe */
+    box-sizing: border-box;
+}
+
 .maling-flex {
     display: flex;
     flex-direction: column;
