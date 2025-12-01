@@ -231,7 +231,7 @@ main {
 
 
 .bilde-container1 img {
-    /* max-width: 100%; Bildet skal ikke overstige containeren */
+    max-width: 100%; /*Bildet skal ikke overstige containeren */
     width: 25%;
     /* object-fit: cover; Gjør at bildet dekker området hvis nødvendig */
     flex: 1; /* Gir bildet fleksibilitet i bredden */
