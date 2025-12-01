@@ -180,7 +180,6 @@ main {
 
 .maling-flex {
     display: flex;
-    flex-direction: column;
     position: relative; /* Gjør at absolutt posisjonerte barn forholder seg til denne */
 }
 
@@ -217,7 +216,6 @@ main {
 
 .flex-container1{
     display: flex;
-    flex-direction: row;
     justify-content: space-between; /* Sørger for avstand mellom elementene */
     align-items: center; /* Justerer vertikalt på midten */
     gap: 2rem; /* Avstand mellom tekst og bilde */
