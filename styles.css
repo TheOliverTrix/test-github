@@ -2,7 +2,9 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    width: 100%;
+}
+body {
+        overflow-x: hidden; /* Skjuler horisontal scrolling */
 }
 
 /* ---------------------------ANIMASJON-------------------------------- */
@@ -77,9 +79,9 @@
     animation-delay: 2.4s;
 }
 
-
-
 /* -------------------------ANIMASJON  SLUTT ----------------------*/
+
+
 
 body {
     background-color: rgb(102, 102, 102);
@@ -229,9 +231,9 @@ main {
 
 
 .bilde-container1 img {
-    max-width: 100%; /* Bildet skal ikke overstige containeren
-    height: 25%; /* Bevarer proporsjonene */
-    object-fit: cover; /* Gjør at bildet dekker området hvis nødvendig */
+    /* max-width: 100%; Bildet skal ikke overstige containeren */
+    width: 25%;
+    /* object-fit: cover; Gjør at bildet dekker området hvis nødvendig */
     flex: 1; /* Gir bildet fleksibilitet i bredden */
 }
 
