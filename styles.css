@@ -81,8 +81,8 @@ body {
 /* Spill both slow-reveal and a short shoot animation når klassen legges på */
 .maling-play {
     opacity: 1;
-    animation: slow-reveal 0.9s ease forwards, maling-shoot 0.55s cubic-bezier(.2,.8,.2,1) forwards;
-    -webkit-animation: slow-reveal 0.9s ease forwards, maling-shoot 0.55s cubic-bezier(.2,.8,.2,1) forwards;
+    animation: slow-reveal 1.5s ease forwards, maling-shoot 0.55s cubic-bezier(.2,.8,.2,1) forwards;
+    -webkit-animation: slow-reveal 1.5s ease forwards, maling-shoot 0.55s cubic-bezier(.2,.8,.2,1) forwards;
     z-index: 60;
 }
 
