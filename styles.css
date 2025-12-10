@@ -4,89 +4,92 @@
     box-sizing: border-box;
 }
 body {
-        overflow-x: hidden; /* Skjuler horisontal scrolling */
-        max-width: 100%;
+    overflow-x: hidden; /* Skjuler horisontal scrolling */
+    max-width: 100%;
 }
 
-/* ---------------------------ANIMASJON-------------------------------- */
+/* Webkit browsers (Chrome, Safari, Edge) */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.6);
+    border-radius: 5px;
+    transform: translateX(10px);
+    transition: transform 0.3s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    transform: translateX(0);
+}
+
+/* ---------------------------ANIMASJON (slow-reveal + shoot)-------------------------- */
 
 @keyframes slow-reveal {
-    /* START: Bildet er 100% klippet vekk fra høyre, altså usynlig */
     0% {
-        -webkit-clip-path: inset(0 0% 0 100%); /* For Safari */
+        -webkit-clip-path: inset(0 0% 0 100%);
         clip-path: inset(0 0% 0 100%);
     }
-    
-    /* FADE-IN (av bildeområdet): Stjerneskuddet blir synlig fra venstre */
     20% {
-        -webkit-clip-path: inset(0 0% 0 100%); 
+        -webkit-clip-path: inset(0 0% 0 100%);
         clip-path: inset(0 0% 0 100%);
     }
-    
-    /* FULLT SYNLIG: Hele bildet vises */
     50% {
-        -webkit-clip-path: inset(0 0% 0 100%); 
+        -webkit-clip-path: inset(0 0% 0 100%);
         clip-path: inset(0 27% 0 0%);
     }
-
-    /* FORBLIR SYNLIG: Holder seg synlig et øyeblikk */
     70% {
-        -webkit-clip-path: inset(0 0% 0 100%); 
+        -webkit-clip-path: inset(0 0% 0 100%);
         clip-path: inset(0 100% 0 0);
     }
-
-    /* FADE-OUT (av bildeområdet): Stjerneskuddet forsvinner fra venstre til høyre */
     100% {
-        -webkit-clip-path: inset(0 0% 0 100%); 
+        -webkit-clip-path: inset(0 0% 0 100%);
         clip-path: inset(0 100% 0 0%);
     }
 }
 
-#maling1 {
-    /* Grunnleggende styling */
-    height: auto;
-    display: block;
-    /* Animasjons-egenskapene: */
-    animation-name: slow-reveal; /* Bruk den nye animasjonen */
-    animation-duration: 7s; /* Slow-mo varighet */
-    animation-timing-function: ease-in-out; 
-    animation-iteration-count: infinite;
-    animation-delay: 5s;
+/* En kort "skyte"-anim for å gjøre effekten tydelig */
+@keyframes maling-shoot {
+  0% {
+    transform: translateY(10px) scale(0.98);
+    opacity: 0;
+  }
+  60% {
+    transform: translateY(-6px) scale(1.03);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
 }
 
-
-#maling2 {
-    /* Grunnleggende styling */
-    height: auto;
-    display: block;
-    /* Animasjons-egenskapene: */
-    animation-name: slow-reveal; /* Bruk den nye animasjonen */
-    animation-duration: 7s; /* Slow-mo varighet */
-    animation-timing-function: ease-in-out; 
-    animation-iteration-count: infinite;
-    animation-delay: 1.2s;
+/* Skjul som standard — ingen globale "animation: none" lenger */
+#maling1, #maling2, #maling3 {
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.15s ease;
+    z-index: 40; /* sørg for at de ligger over andre elementer */
+    will-change: transform, opacity, clip-path;
 }
 
-
-#maling3 {
-    /* Grunnleggende styling */
-    height: auto;
-    display: block;
-    /* Animasjons-egenskapene: */
-    animation-name: slow-reveal; /* Bruk den nye animasjonen */
-    animation-duration: 3s; /* Slow-mo varighet */
-    animation-timing-function: ease-in-out; 
-    animation-iteration-count: infinite;
-    animation-delay: 2.4s;
+/* Spill both slow-reveal and a short shoot animation når klassen legges på */
+.maling-play {
+    opacity: 1;
+    animation: slow-reveal 0.9s ease forwards, maling-shoot 0.55s cubic-bezier(.2,.8,.2,1) forwards;
+    -webkit-animation: slow-reveal 0.9s ease forwards, maling-shoot 0.55s cubic-bezier(.2,.8,.2,1) forwards;
+    z-index: 60;
 }
 
 /* -------------------------ANIMASJON  SLUTT ----------------------*/
 
-
-
 body {
     background-color: rgb(102, 102, 102);
-
 }
 
 .nunito_font {
@@ -104,67 +107,62 @@ header {
     background-color: rgb(79, 57, 100);
     height: 80px;
     color: #FFE006;
-    padding: 0px 20px 0px 0px;
     border: solid 4px rgba(0, 0, 0, 0.268);
     border-radius: 20px 20px 0px 20px;
     margin-top: 20px;
     display: flex;
-    align-items: center; /* Justerer innholdet vertikalt */
-    justify-content: space-between; /* Plasserer logoen og navigasjonslisten i hver sin ende */
+    align-items: center;
+    justify-content: space-between;
     box-sizing: border-box;
 }
 
+.nav_knapper { }
+
 .logo_begge_2 {
-    width: 190px; /* Juster etter ønsket størrelse */
+    width: 190px;
     position: relative;
     opacity: 70%;
 }
 
 .logo_header {
-    width: 100%; /* Gjør at bildet tar opp hele bredden av #logo_header */
+    width: 100%;
     height: auto;
     position: absolute;
-    top: -32px; /* Juster etter ønsket posisjon */
+    top: -32px;
     left: 40px;
-    transition: opacity 0.3s ease-in-out
-    /*box-shadow: 5px 5px 15px #009999;  */
+    transition: opacity 0.3s ease-in-out;
 }
 
 .logo_header2 {
-    width: 190px; /* Juster etter ønsket størrelse */
+    width: 190px;
     position: absolute;
     opacity: 70%;
     z-index: 2;
 }
 
 .logo_begge_2 .logo_header2 {
-    width: 100%; /* Gjør at bildet tar opp hele bredden av #logo_header */
+    width: 100%;
     height: auto;
     position: absolute;
-    top: -32px; /* Juster etter ønsket posisjon */
+    top: -32px;
     left: 40px;
     opacity: 0;
     z-index: 2;
-    /*box-shadow: 5px 5px 15px #009999;  */
 }
 
-.logo_begge_2:hover .logo_header {
-    opacity: 0;
-}
-.logo_begge_2:hover .logo_header2 {
-    opacity: 0.7;
-}
+.logo_begge_2:hover .logo_header { opacity: 0; }
+.logo_begge_2:hover .logo_header2 { opacity: 0.7; }
 
 header ul {
     list-style: none;
-    display: flex; /* Plasserer listeelementene horisontalt */
-    gap: 60px; /* Avstand mellom elementene */
+    display: flex;
+    gap: 60px;
     padding-right: 150px;
 }
 
 header ul a {
-    color: inherit; /* Arver tekstfargen fra foreldreelementet eller annen angitt farge */
-    text-decoration: none; /* Fjerner understrekningen */
+    color: inherit;
+    text-decoration: none;
 }
 
 main {
@@ -173,15 +171,14 @@ main {
 }
 
 .maling-flex, .flex-container1 {
-    /* Sikrer at flex-containeren bruker plassen riktig på mobil */
-    width: 100%; 
-    min-width: 0; /* Hjelper til med å la innholdet krympe */
+    width: 100%;
+    min-width: 0;
     box-sizing: border-box;
 }
 
 .maling-flex {
     display: flex;
-    position: relative; /* Gjør at absolutt posisjonerte barn forholder seg til denne */
+    position: relative;
 }
 
 #maling1 {
@@ -192,7 +189,6 @@ main {
     rotate: 10deg;
     max-width: 100%;
     height: auto;
-
 }
 
 #maling2 {
@@ -215,11 +211,11 @@ main {
     height: auto;
 }
 
-.flex-container1{
+.flex-container1 {
     display: flex;
-    justify-content: space-between; /* Sørger for avstand mellom elementene */
-    align-items: center; /* Justerer vertikalt på midten */
-    gap: 2rem; /* Avstand mellom tekst og bilde */
+    justify-content: space-between;
+    align-items: center;
+    gap: 2rem;
     position: relative;
     padding: 0 0 0 2rem;
 }
@@ -228,9 +224,9 @@ main {
     font-size: 28px;
     font-family: "Nunito", Arial, Helvetica, sans-serif;
     color: rgb(173, 173, 173);
-    padding: 0 0 12rem 1rem;
+    margin: 0 0 0 1rem;
     text-shadow: 3px 3px 15px #232525;
-    flex: 1; /* Gir teksten fleksibilitet i bredden */
+    flex: 1;
 }
 
 .uthevet {
@@ -240,18 +236,13 @@ main {
     text-shadow: 3px 3px 15px #232525;
 }
 
-
-
 .bilde-container1 img {
-    max-width: 100%; /*Bildet skal ikke overstige containeren */
+    max-width: 100%;
     height: auto;
-    /* object-fit: cover; Gjør at bildet dekker området hvis nødvendig */
-    flex: 1; /* Gir bildet fleksibilitet i bredden */
+    flex: 1;
 }
 
-.om_meg {
-    flex: 2;
-}
+.om_meg { flex: 2; }
 
 #linje1 {
     margin-top: 0;
@@ -261,13 +252,41 @@ main {
     height: 2px;
     border: none;
     background-color: #009999;
-    
+}
+
+#coggle_container {
+    margin: 0rem 1rem 0rem 0rem;
+    background-color: #fafafa;
+    border-radius: 15px;
+    box-shadow: 5px 5px 15px #232525;
+}
+
+#coggle {
+    border: none;
+    border-radius: 15px;
+    box-shadow: 5px 5px 15px #232525;
+    clip-path: inset(5rem 0rem 2rem 44rem round 15px);
+    margin-left: -2rem;
+    margin-top: -4rem;
+    width: calc(100% + 1rem);
+    transform: translateX(-25%);
+}
+
+#kontakt_meg {
+    font-size: 28px;
+    font-family: "Nunito", Arial, Helvetica, sans-serif;
+    color: rgb(173, 173, 173);
+    margin: 0 0 0rem 1rem;
+    text-shadow: 3px 3px 15px #232525;
+    flex: 1;
+    padding-top: 2rem;
 }
 
 .footer {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
+    border: solid 4px rgba(0, 0, 0, 0.268);
     background-color: rgb(79, 57, 100);
     padding: 40px;
     border-radius: 25px 25px 0 0;
@@ -278,13 +297,7 @@ main {
     box-sizing: border-box;
 }
 
-/* .copyright {
-    /* justify-items: flex-end; */
-/* } */
-
-
 .footer p {
     color: #FFE006;
     margin: auto;
 }
-
