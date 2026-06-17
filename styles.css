@@ -359,13 +359,15 @@ main {
 }
 
 .timeline-list {
-    list-style-type: disc;
-    padding-left: 20px;
+    list-style-type: none; /* Dette fjerner kulepunktene (setter dem til none) */
+    padding-left: 0;       /* Fjerner innrykket */
     margin: 0;
-    color: var(--text-muted);
 }
 
 .timeline-list li {
+    font-size: 1.05rem;      /* Samme størrelse som .timeline-subtitle */
+    font-weight: 500;        /* Samme tykkelse som .timeline-subtitle */
+    color: var(--text-main); /* Samme farge */
     margin-bottom: 5px;
 }
 
