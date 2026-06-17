@@ -109,7 +109,7 @@ header {
     color: #FFE006;
     border: solid 4px rgba(0, 0, 0, 0.268);
     border-radius: 20px 20px 0px 20px;
-    margin-top: 20px;
+/* margin: 0px 20px 0px 20px; */
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -211,6 +211,8 @@ main {
     height: auto;
 }
 
+/* Under her har jeg en flex container derav navnet, den holder teksten på hovedsiden og bilde. Flex gjør at disse liger på linje */
+
 .flex-container1 {
     display: flex;
     justify-content: space-between;
@@ -221,7 +223,7 @@ main {
 }
 
 .om_meg {
-    font-size: 28px;
+    font-size: 1.8rem;
     font-family: "Nunito", Arial, Helvetica, sans-serif;
     color: rgb(173, 173, 173);
     margin: 0 0 0 1rem;
@@ -238,7 +240,7 @@ main {
 
 .bilde-container1 img {
     max-width: 100%;
-    height: auto;
+    /* height: auto; */
     flex: 1;
 }
 
@@ -272,8 +274,115 @@ main {
     transform: translateX(-25%);
 }
 
+/* her kommer utdanningen min */
+:root {
+    --text-main: #333;
+    --text-muted: #666;
+    --line-color: #ddd;
+}
+
+.timeline-container {
+    max-width: 800px;
+    width: 100%;
+    margin: 0 auto;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    text-shadow: none;
+}
+
+.timeline-header {
+    text-align: center;
+    margin-bottom: 40px;
+    background-color: #ccc;
+    border-radius: 40px;
+    padding: 15px 30px;
+    display: inline-block;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.timeline-header h1 {
+    margin: 0;
+    font-size: 2.2rem;
+    color: #444;
+    font-weight: normal;
+}
+
+/* Den store felles hvite boksen */
+.timeline-box {
+    background: #fff;
+    padding: 40px 40px 40px 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+}
+
+.timeline {
+    position: relative;
+    padding-left: 30px;
+    margin-left: 20px;
+    border-left: 4px solid var(--line-color);
+}
+
+.timeline-item {
+    position: relative;
+    margin-bottom: 35px;
+}
+
+.timeline-item:last-child {
+    margin-bottom: 0;
+}
+
+/* Prikken/sirkelen på selve tidslinjen */
+.timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -42px; /* Plasserer den nøyaktig midt på den vertikale linjen */
+    top: 6px;
+    width: 14px;
+    height: 14px;
+    background-color: var(--accent-color, #ccc);
+    border: 3px solid #fff;
+    border-radius: 50%;
+    box-shadow: 0 0 0 2px var(--line-color);
+}
+
+.timeline-title {
+    font-size: 1.25rem;
+    font-weight: bold;
+    margin: 0 0 5px 0;
+    color: var(--accent-color, #333);
+}
+
+.timeline-subtitle {
+    font-size: 1.05rem;
+    font-weight: 500;
+    margin: 0 0 10px 0;
+    color: var(--text-main);
+}
+
+.timeline-list {
+    list-style-type: disc;
+    padding-left: 20px;
+    margin: 0;
+    color: var(--text-muted);
+}
+
+.timeline-list li {
+    margin-bottom: 5px;
+}
+
+/* Fargepalett beholdt fra det opprinnelige bildet */
+.color-vgs { --accent-color: #6a8e3b; }
+.color-fhs { --accent-color: #3b5a9e; }
+.color-nkf { --accent-color: #2ca089; }
+.color-ntnu { --accent-color: #a06640; }
+.color-bach { --accent-color: #8c76cc; }
+.color-oslo1 { --accent-color: #4dbfb0; }
+.color-usn { --accent-color: #d1c045; }
+.color-hiof { --accent-color: #d687db; }
+.color-master { --accent-color: #558cd6; }
+
+
 #kontakt_meg {
-    font-size: 28px;
+    font-size: 1rem;
     font-family: "Nunito", Arial, Helvetica, sans-serif;
     color: rgb(173, 173, 173);
     margin: 0 0 0rem 1rem;
